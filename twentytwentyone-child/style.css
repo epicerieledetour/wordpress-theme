@@ -1,0 +1,226 @@
+/*
+ Theme Name: Épicerie Le Détour (Twenty Twenty One Child)
+ Theme URI: https://github.com/epicerieledetour/wordpress-theme/twentytwentyone-child
+ Description: Épicerie Le Détour Theme (Twenty Twenty One Child)
+ Author: Épicerie Le Détour
+ Author URI: https://epicerieledetour.org
+ Template: twentytwentyone
+ Requires at least: 5.3
+ Tested up to: 5.6
+ Requires PHP: 5.6
+ Version: 0.0.1
+ License: GNU General Public License v2 or later
+ License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain: twentytwentyonechild
+ Tags: one-column, accessibility-ready, custom-colors, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready
+*/
+
+:root {
+
+/*--global--color-black: #000; */ /* Not overriden */
+/*--global--color-dark-gray: #28303d; */ /* Not overriden */
+  --global--color-gray: rgb(102, 102, 102);        /* #666666 */
+  --global--color-light-gray: rgb(234, 234, 227);  /* #eaeae3 */
+  --global--color-green: rgb(206, 223, 57);        /* #cedf39 */
+  --global--color-blue: rgb(129, 211, 204);        /* #81d3cc */
+/*--global--color-purple: #d1d1e4; */ /* Not overriden */
+  --global--color-orange: rgb(255, 161, 49);       /* #ffa131 */
+  --global--color-yellow: rgb(255, 237, 114);      /* #ffed72 */
+  --global--color-red: rgb(255, 100, 98);          /* #ff6462 */
+  --global--color-white: rgb(248, 248, 248);       /* #f8f8f8 */
+  --global--color-white-50: rgba(248, 248, 248, 0.5);
+  --global--color-white-90: rgba(248, 248, 248, 0.9);
+  --global--color-primary: var(--global--color-black);
+
+  --global--color-primary-hover: var(--global--color-gray);
+
+  --global--color-background: var(--global--color-white);
+
+  --global--font-primary: sans-serif;
+  --global--font-secondary: sans-serif;
+
+  --global--font-size-base: 1rem;
+  --global--font-size-xs: 1rem;
+  --global--font-size-sm: 1.125rem;
+  --global--font-size-md: 1.25rem;
+  --global--font-size-lg: 1.5rem;
+  --global--font-size-xl: 1.75rem;
+  --global--font-size-xxl: 3.5rem;
+  --global--font-size-xxxl: 5rem;
+
+  --heading--font-weight: bold;
+
+  --button--font-size: var(--global--font-size-md);
+
+  --primary-nav--font-size: var(--global--font-size-base);
+
+  --footer--color-text: var(--global--color-white);
+  --footer--color-link: var(--global--color-white);
+  --footer--color-link-hover: var(--global--color-white);
+}
+
+@media only screen and (min-width: 652px) {
+  :root {
+    --heading--font-size-h2: var(--global--font-size-xl);
+  }
+}
+
+/*
+Set headings black, content gray
+*/
+body {
+  /* HACK
+  I think --global--color-secondary is overrided in class-twenty-twenty-one-custom-colors.php
+  from the parent theme, so I'm forcing a specific color here.
+  color: var(--global--color-secondary);
+  */
+  color: var(--global--color-gray);
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  color: var(--global--color-primary);
+}
+
+/*
+HACK: ensure top level menu is always
+*/
+#masthead {
+  min-height: 4rem;
+}
+
+/*
+Reduce header vertical size
+*/
+.site-header {
+  padding-top: unset;
+  padding-bottom: unset;
+}
+.site-logo {
+  margin-top: unset;
+  margin-bottom: unset;
+}
+.site-main {
+  padding-top: unset;
+  padding-bottom: unset;
+}
+
+/*
+Remove header for all pages
+*/
+.entry-header {
+  display: none;
+}
+.site-main > article > * {
+  margin-top: unset;
+}
+
+/*
+Set horizontal line width
+*/
+hr.wp-block-separator {
+  border-bottom-width: 3px;
+}
+hr.wp-block-separator:not(.is-style-dots):not(.alignwide) {
+  max-width: 4rem;
+}
+
+/*
+Replace button :hov background by a transparent white
+to darken the lighten the background when hovered
+*/
+.wp-block-button.is-style-outline .wp-block-button__link:hover {
+  background-color: var(--global--color-white-50) !important;
+}
+
+/*
+Set .wp-block-cover to take less vertical space
+*/
+.wp-block-cover {
+  min-height: unset;
+}
+
+/*
+Set button to take less vertical space
+*/
+.site .button,
+button,
+input[type="submit"],
+input[type="reset"],
+.wp-block-search .wp-block-search__button,
+.wp-block-button .wp-block-button__link,
+.wp-block-file a.wp-block-file__button {
+  padding-bottom: .5rem;
+  padding-top: .5rem;
+}
+
+/*
+Show language link bolder
+*/
+.primary-navigation .lang-item > a {
+  font-weight: bold;
+}
+
+/* .post-thumbnail,
+.entry-content .wp-audio-shortcode,
+.entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce),
+*/
+*[class*=inner-container] > blockquote:not(.entry-content):not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce)
+{
+    max-width: var(--responsive--alignwide-width);
+}
+.wp-block-quote > p {
+  font-size: 2.25rem;
+  font-weight: lighter;
+  color: var(--global--color-primary);
+}
+
+/*
+Minimize site footer vertical size
+*/
+
+/*
+HACK: remove site-info in footer
+This should be removed from the template
+*/
+
+.site-footer > .site-info {
+  display: none;
+}
+
+.site-main > .entry > .entry-footer {
+  display: none;
+}
+
+.site-footer {
+  background-color: var(--global--color-black);
+  color: var(--global--color-secondary);
+  max-width: unset;
+}
+
+.site-main > article > * {
+  margin-bottom: 0px;
+}
+
+.footer-navigation {
+  margin-top: unset;
+  margin-bottom: unset;
+}
+
+.site-footer {
+  padding-bottom: unset;
+}
+
+.no-widgets .site-footer {
+  margin-top: unset;
+}
